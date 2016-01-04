@@ -36,11 +36,6 @@ RUN rm -f /etc/service/sshd/down
 # init system will auto-generate one during boot.
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
-
-RUN echo -e "\n\n\n* * *  Authorizing SSH client key * * * \n\n"
-ADD id_rsa.pub /tmp/id_rsa.pub
-RUN cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys
-
 RUN echo -e "\n\n\n* * *  Cleaning up  * * * \n\n"
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
