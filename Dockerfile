@@ -48,4 +48,12 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD add_ssh_env_keys.sh /etc/my_init.d/
 RUN chmod +x /etc/my_init.d/*.sh
 
+#  Example build command :
+#  docker build --rm -t mytry06 .
+
+#  Example run commands :
+#  docker run -d -e SSH_KEYS="$(cat ~/.ssh/id_rsa.pub)" -e USER_PWRD="okok" -e SSH_USER="$(whoami)" mytry06 > DCKR_PID && docker logs -f $(cat DCKR_PID)
+#
+
+
 
