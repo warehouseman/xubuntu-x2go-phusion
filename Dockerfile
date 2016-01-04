@@ -43,12 +43,25 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD add_ssh_env_keys.sh /etc/my_init.d/
 RUN chmod +x /etc/my_init.d/*.sh
 
-#  Example build command :
-#  docker build --rm -t mytry06 .
+#  export PROJ="test07";
+#  export USER_PWRD="secrEt";
 
-#  Example run commands :
-#  docker run -d -e SSH_KEYS="$(cat ~/.ssh/id_rsa.pub)" -e USER_PWRD="okok" -e SSH_USER="$(whoami)" mytry06 > DCKR_PID && docker logs -f $(cat DCKR_PID)
-#
+#  Example build command :
+#  docker build --rm -t "img_${PROJ}" .
+
+#  Example run command :
+# docker run -d \
+#     --name cnt_${PROJ} \
+#     -e SSH_KEYS="$(cat ~/.ssh/id_rsa.pub)" \
+#     -e USER_PWRD=${USER_PWRD} \
+#     -e SSH_USER="$(whoami)" \
+#     "img_${PROJ}" > "pid_${PROJ}" \
+#   && IPADR=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' cnt_${PROJ}) \
+#   && export ip_${PROJ}=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' cnt_${PROJ}) \
+#   && eval echo -e "\\\n\\\n       \* \* \*  Address for \'cnt_${PROJ}\' is : \'\${ip_${PROJ}}\' \* \* \* \\\n" \
+#   && docker logs -f $(cat "pid_${PROJ}");
+  
+
 
 
 
