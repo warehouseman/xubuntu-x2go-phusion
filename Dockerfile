@@ -16,9 +16,12 @@ RUN add-apt-repository ppa:x2go/stable
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -o Dpkg::Options::="--force-confold" \
- && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold" \
- && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    xubuntu-desktop \
+ && DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -o Dpkg::Options::="--force-confold"
+ 
+RUN DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y xubuntu-desktop
+    
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
     x2goserver \
     x2goserver-xsession \
     nano \
@@ -43,6 +46,9 @@ RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD add_ssh_env_keys.sh /etc/my_init.d/
 RUN chmod +x /etc/my_init.d/*.sh
 
+RUN DEBIAN_FRONTEND=noninteractive apt-get clean && apt-get -y autoremove
+
+
 #  export PROJ="test07";
 #  export USER_PWRD="secrEt";
 
@@ -60,8 +66,4 @@ RUN chmod +x /etc/my_init.d/*.sh
 #   && export ip_${PROJ}=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' cnt_${PROJ}) \
 #   && eval echo -e "\\\n\\\n       \* \* \*  Address for \'cnt_${PROJ}\' is : \'\${ip_${PROJ}}\' \* \* \* \\\n" \
 #   && docker logs -f $(cat "pid_${PROJ}");
-  
-
-
-
 
