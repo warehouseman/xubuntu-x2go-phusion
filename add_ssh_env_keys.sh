@@ -18,7 +18,9 @@ if [ ! -z "${SSH_USER}" ] ; then
     echo "${SSH_USER}  ALL=(ALL:ALL) ALL" | sudo tee --append /etc/sudoers
     echo "${SSH_USER}:${USER_PWRD}" | sudo chpasswd;
     EVAR="LANG"; EVARVAL="$(cat /etc/container_environment/${EVAR})";
+    echo "export ${EVAR}=${EVARVAL};" >> /home/${SSH_USER}/.profile
     EVAR="LANGUAGE"; EVARVAL="$(cat /etc/container_environment/${EVAR})";
+    echo "export ${EVAR}=${EVARVAL};" >> /home/${SSH_USER}/.profile
     EVAR="LC_CTYPE"; EVARVAL="$(cat /etc/container_environment/${EVAR})";
     echo "export ${EVAR}=${EVARVAL};" >> /home/${SSH_USER}/.profile
   fi

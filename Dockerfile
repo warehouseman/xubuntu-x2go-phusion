@@ -49,21 +49,4 @@ RUN chmod +x /etc/my_init.d/*.sh
 RUN DEBIAN_FRONTEND=noninteractive apt-get clean && apt-get -y autoremove
 
 
-#  export PROJ="test07";
-#  export USER_PWRD="secrEt";
-
-#  Example build command :
-#  docker build --rm -t "img_${PROJ}" .
-
-#  Example run command :
-# docker run -d \
-#     --name cnt_${PROJ} \
-#     -e SSH_KEYS="$(cat ~/.ssh/id_rsa.pub)" \
-#     -e USER_PWRD=${USER_PWRD} \
-#     -e SSH_USER="$(whoami)" \
-#     "img_${PROJ}" > "pid_${PROJ}" \
-#   && IPADR=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' cnt_${PROJ}) \
-#   && export ip_${PROJ}=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' cnt_${PROJ}) \
-#   && eval echo -e "\\\n\\\n       \* \* \*  Address for \'cnt_${PROJ}\' is : \'\${ip_${PROJ}}\' \* \* \* \\\n" \
-#   && docker logs -f $(cat "pid_${PROJ}");
 
