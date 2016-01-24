@@ -8,6 +8,8 @@ The Dockerfile takes ideas from ```paimpozhil/docker-x2go-xubuntu``` but starts 
 
 Forks and pull requests : [xubuntu-x2go-phusion on GitHub](https://github.com/warehouseman/xubuntu-x2go-phusion)
 
+A "getting started" video :  [Meteor / CircleCI Tutorial -- #0 Create a Docker Machine](https://www.youtube.com/watch?v=UzA3ddE0XPA)
+
 ## Usage:
 
 ### Initial State
